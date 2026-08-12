@@ -1,0 +1,23 @@
+<h1>Menú de la Cafetería</h1>
+
+<div class="menu-contenedor">
+  
+  <!-- Sintaxis moderna: más limpia y nativa -->
+  @for (producto of productos; track producto.nombre) {
+    <div class="tarjeta-producto">
+      
+      <h2>{{ producto.nombre }}</h2>
+      <p>{{ producto.descripcion }}</p>
+      <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+      
+      @if (producto.imagen) {
+        <img [src]="'http://127.0.0.1:8000' + producto.imagen" alt="Foto de {{ producto.nombre }}" width="200">
+      }
+      
+    </div>
+  } @empty {
+    <!-- Nuestro detector de fallos absoluto -->
+    <p style="color: red; font-weight: bold;">El HTML funciona, pero Angular cree que la lista de productos está vacía.</p>
+  }
+  
+</div>
