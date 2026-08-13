@@ -1,23 +1,48 @@
-<h1>Menú de la Cafetería</h1>
+<header class="carta__cabeza">
+  <div class="contenedor">
+    <span class="rotulo">La carta</span>
+    <h1 class="carta__titulo">Menú de la cafetería</h1>
+    <p class="carta__nota">Preparado al momento · Precios en pesos colombianos</p>
+  </div>
+</header>
 
-<div class="menu-contenedor">
-  
-  <!-- Sintaxis moderna: más limpia y nativa -->
-  @for (producto of productos; track producto.nombre) {
-    <div class="tarjeta-producto">
-      
-      <h2>{{ producto.nombre }}</h2>
-      <p>{{ producto.descripcion }}</p>
-      <p><strong>Precio:</strong> ${{ producto.precio }}</p>
-      
-      @if (producto.imagen) {
-        <img [src]="'http://127.0.0.1:8000' + producto.imagen" alt="Foto de {{ producto.nombre }}" width="200">
-      }
-      
+<section class="seccion">
+  <div class="contenedor">
+
+    <p class="carta__estado" *ngIf="cargando">Cargando la carta…</p>
+
+    <div class="carta__estado" *ngIf="!cargando && fallo">
+      <h3>No pudimos cargar la carta</h3>
+      <p>Revisa que el servidor de Django esté corriendo en el puerto 8000 y recarga la página.</p>
     </div>
-  } @empty {
-    <!-- Nuestro detector de fallos absoluto -->
-    <p style="color: red; font-weight: bold;">El HTML funciona, pero Angular cree que la lista de productos está vacía.</p>
-  }
-  
-</div>
+
+    <div class="carta__estado" *ngIf="!cargando && !fallo && productos.length === 0">
+      <h3>La carta está vacía</h3>
+      <p>Agrega el primer producto desde el panel de administración de Django.</p>
+    </div>
+
+    <div class="carta__grid" *ngIf="!cargando && !fallo && productos.length > 0">
+      <article class="plato" *ngFor="let producto of productos">
+
+        <div class="plato__foto">
+          <img *ngIf="producto.imagen" [src]="producto.imagen" [alt]="producto.nombre" loading="lazy">
+          <span class="plato__sinfoto" *ngIf="!producto.imagen">A&amp;T</span>
+        </div>
+
+        <div class="plato__cuerpo">
+          <span class="plato__tamano" *ngIf="producto.tamano">{{ producto.tamano }}</span>
+
+          <div class="plato__linea">
+            <h3 class="plato__nombre">{{ producto.nombre }}</h3>
+            <span class="plato__puntos" aria-hidden="true"></span>
+            <span class="plato__precio">${{ producto.precio | number:'1.0-0' }}</span>
+          </div>
+
+          <p class="plato__descripcion">{{ producto.descripcion }}</p>
+        </div>
+
+      </article>
+    </div>
+
+  </div>
+</section>

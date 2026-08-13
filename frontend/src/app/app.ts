@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './components/navbar/navbar'; // Importamos tu navbar
+import { NavbarComponent } from './components/navbar/navbar';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent], // Importamos los dos
-  template: `
-    <app-navbar></app-navbar> <!-- La barra siempre fija arriba -->
-    <router-outlet></router-outlet> <!-- Aquí cambiará el contenido (Inicio o Menú) -->
-  `
+  imports: [RouterOutlet, NavbarComponent],   // <-- esta línea es la clave
+  templateUrl: './app.html',
+  styleUrl: './app.css'
 })
-export class App {}
+export class App { }   // <-- deja el nombre que YA tenías

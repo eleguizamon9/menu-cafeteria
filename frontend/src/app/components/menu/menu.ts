@@ -11,27 +11,27 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MenuComponent implements OnInit {
   private http = inject(HttpClient);
-  private cdr = inject(ChangeDetectorRef); // Herramienta para despertar a Angular
-  
+  private cdr = inject(ChangeDetectorRef);
+
+  private readonly URL_API = 'http://127.0.0.1:8000/menu/';
+
   productos: any[] = [];
+  cargando = true;
+  fallo = false;
 
   ngOnInit() {
-    console.log("1. Entrando al componente Menú y pidiendo datos a Django...");
-
-    this.http.get<any>('http://127.0.0.1:8000/menu/')
-      .subscribe({
-        next: (respuesta: any) => {
-          console.log("2. ¡Respuesta exitosa de Django!", respuesta);
-          
-          // Asignamos los datos
-          this.productos = respuesta.menu;
-          
-          // Obligamos a Angular a repintar la pantalla inmediatamente
-          this.cdr.detectChanges(); 
-        },
-        error: (error) => {
-          console.error("3. ¡Error en la petición HTTP!", error);
-        }
-      });
+    this.http.get<any>(this.URL_API).subscribe({
+      next: (respuesta: any) => {
+        this.productos = respuesta.menu;
+        this.cargando = false;
+        this.cdr.detectChanges();
+      },
+      error: (error) => {
+        console.error('Error en la petición HTTP', error);
+        this.fallo = true;
+        this.cargando = false;
+        this.cdr.detectChanges();
+      }
+    });
   }
 }

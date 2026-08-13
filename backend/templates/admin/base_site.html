@@ -1,0 +1,26 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | Aroma &amp; Tradición{% endblock %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'admin_marca.css' %}">
+{% endblock %}
+
+{% block branding %}
+  <div id="site-name">
+    <a href="{% url 'admin:index' %}">
+      <span class="marca-sello">A&amp;T</span>
+      <span class="marca-nombre">
+        <strong>Aroma &amp; Tradición</strong>
+        <small>Panel de administración</small>
+      </span>
+    </a>
+  </div>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

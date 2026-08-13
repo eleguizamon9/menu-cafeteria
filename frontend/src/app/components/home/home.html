@@ -1,16 +1,69 @@
-<div class="hero-cafeteria">
-  <div class="hero-contenido">
-    <h1>Aroma & Tradición</h1>
-    <p>El mejor café de origen colombiano, cultivado con pasión y servido directo a tu taza.</p>
-    
-    <div class="botones-accion">
-      <!-- Usamos routerLink para viajar al menú sin recargar la página -->
-      <a routerLink="/menu" class="btn-primario">Ver Nuestro Menú</a>
+<section class="portada">
+  <div class="contenedor portada__caja">
+    <span class="rotulo portada__rotulo">Café de origen · 100% colombiano</span>
+    <h1 class="portada__titulo">
+      Del eje cafetero<br>
+      <em>directo a tu taza</em>
+    </h1>
+    <p class="portada__texto">
+      El mejor café de origen colombiano, cultivado con pasión, tostado con paciencia
+      y servido en el punto exacto.
+    </p>
+    <div class="portada__acciones">
+      <a class="boton boton--principal" routerLink="/menu">Ver el menú</a>
+      <a class="boton boton--fantasma" href="#nosotros">Quiénes somos</a>
     </div>
+  </div>
+  <div class="portada__trama" aria-hidden="true"></div>
+</section>
+
+<div class="franja">
+  <div class="contenedor franja__caja">
+    <span>Variedad arábica</span>
+    <span>Tueste artesanal</span>
+    <span>Grano seleccionado a mano</span>
+    <span>Molido del día</span>
   </div>
 </div>
 
-<section id="quienes-somos" class="seccion-historia">
-  <h2>¿Quiénes Somos?</h2>
-  <p>Somos un espacio acogedor donde fusionamos la tradición de los caficultores del eje cafetero con la modernidad del código y la tecnología. Cada grano es seleccionado a mano para ofrecerte una experiencia única.</p>
+<section class="seccion" id="nosotros">
+  <div class="contenedor nosotros">
+    <div class="nosotros__texto">
+      <span class="rotulo">Quiénes somos</span>
+      <h2>Tradición caficultora,<br>oficio de todos los días</h2>
+      <p>
+        Somos un espacio acogedor donde fusionamos la tradición de los caficultores del
+        eje cafetero con la modernidad del código y la tecnología. Cada grano es
+        seleccionado a mano para ofrecerte una experiencia única.
+      </p>
+      <p>
+        Trabajamos directamente con fincas de Antioquia, Caldas y Quindío, y ajustamos
+        el perfil de tueste cosecha por cosecha. Nada se sirve sin haberlo probado antes
+        en barra.
+      </p>
+    </div>
+
+    <aside class="ficha">
+      <span class="ficha__titulo">Ficha del grano</span>
+      <dl class="ficha__lista">
+        <div><dt>Origen</dt><dd>Eje cafetero</dd></div>
+        <div><dt>Altura</dt><dd>1.500 — 1.900 msnm</dd></div>
+        <div><dt>Variedad</dt><dd>Arábica</dd></div>
+        <div><dt>Proceso</dt><dd>Lavado</dd></div>
+        <div><dt>Tueste</dt><dd>Medio</dd></div>
+        <div><dt>Notas</dt><dd>Panela, cacao, cítricos</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<section class="seccion seccion--oscura">
+  <div class="contenedor cierre">
+    <span class="rotulo">La carta</span>
+    <h2 class="cierre__titulo">Elige tu próxima taza</h2>
+    <p class="cierre__texto">
+      Tintos, métodos filtrados y espresso, con precios claros y grano fresco todos los días.
+    </p>
+    <a class="boton boton--principal" routerLink="/menu">Ver el menú completo</a>
+  </div>
 </section>

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router'; // Importante para que el botón funcione
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink], // Registramos el enrutador aquí
+  imports: [CommonModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

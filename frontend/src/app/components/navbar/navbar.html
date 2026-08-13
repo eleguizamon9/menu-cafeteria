@@ -1,10 +1,29 @@
-<nav class="navbar-cafeteria">
-  <div class="logo">☕ Aroma & Tradición</div>
-  <div class="nav-links">
-    <a routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
-    <a routerLink="/menu" routerLinkActive="activo">Menú</a>
-    
-    <!-- Enlace tradicional directo al servidor de Django -->
-    <a href="http://127.0.0.1:8000/admin/" target="_blank" class="btn-admin">Panel Admin</a>
+<header class="nav">
+  <div class="nav__caja contenedor">
+
+    <a class="marca" routerLink="/" (click)="cerrarMenu()">
+      <span class="marca__sello">A&amp;T</span>
+      <span class="marca__texto">
+        <strong>Aroma &amp; Tradición</strong>
+        <small>Café de origen · Eje cafetero</small>
+      </span>
+    </a>
+
+    <button class="nav__boton" type="button"
+            (click)="alternarMenu()"
+            [attr.aria-expanded]="menuAbierto"
+            aria-label="Abrir navegación">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav__enlaces" [class.nav__enlaces--abierto]="menuAbierto">
+      <a routerLink="/" routerLinkActive="activo"
+         [routerLinkActiveOptions]="{ exact: true }" (click)="cerrarMenu()">Inicio</a>
+      <a routerLink="/menu" routerLinkActive="activo" (click)="cerrarMenu()">Menú</a>
+      <a class="nav__admin" href="http://127.0.0.1:8000/admin/" target="_blank" rel="noopener">
+        Panel admin
+      </a>
+    </nav>
+
   </div>
-</nav>
+</header>
