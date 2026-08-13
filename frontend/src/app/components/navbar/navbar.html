@@ -1,4 +1,10 @@
-<nav>
-  <a routerLink="/">Inicio</a>
-  <a routerLink="/menu">Menú</a>
+<nav class="navbar-cafeteria">
+  <div class="logo">☕ Aroma & Tradición</div>
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+    <a routerLink="/menu" routerLinkActive="activo">Menú</a>
+    
+    <!-- Enlace tradicional directo al servidor de Django -->
+    <a href="http://127.0.0.1:8000/admin/" target="_blank" class="btn-admin">Panel Admin</a>
+  </div>
 </nav>
